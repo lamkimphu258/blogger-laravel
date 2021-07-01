@@ -9,5 +9,11 @@ down:
 
 restart: down up
 
-init-env:
+env-init:
 	ln -s "${PWD}/app/.env" "${PWD}/.env"
+
+container-list:
+	docker-compose ps
+
+app-exec:
+	docker-compose exec app $(COMMAND)
