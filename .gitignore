@@ -1,0 +1,4 @@
+docker-compose
+.idea
+vendor
+.env
