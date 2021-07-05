@@ -23,3 +23,8 @@ composer-install:
 
 composer-require:
 	$(MAKE) app-exec composer require $(PACKAGE)
+
+artisan:
+	docker-compose exec app \
+	php artisan $(COMMAND)
+
