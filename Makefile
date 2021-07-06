@@ -22,9 +22,13 @@ composer-install:
 	$(MAKE) app-exec composer install
 
 composer-require:
-	$(MAKE) app-exec composer require $(PACKAGE)
+	$(MAKE) app-exec composer require $(PKG)
 
 artisan:
 	docker-compose exec app \
-	php artisan $(COMMAND)
+	php artisan $(CMD)
+
+reseed:
+	$(MAKE) artisan CMD=migrate:refresh
+	$(MAKE) artisan CMD=db:seed
 

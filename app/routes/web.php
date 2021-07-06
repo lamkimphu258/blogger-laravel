@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\CommonController;
+use App\Http\Controllers\PostController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -15,5 +16,11 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::prefix('/')->group(function () {
-    Route::get('', [CommonController::class, 'home'])->name('home');
+    Route::get('/', [CommonController::class, 'home'])->name('home');
+});
+
+Route::prefix('/posts')->group(function() {
+    Route::get('/', [PostController::class, 'index'])->name('post-list');
+    Route::get('/{post}', [PostController::class, 'show'])->name('post-show');
+    Route::get('/{post}/{vote}', [PostController::class, 'vote'])->name('post-vote');
 });

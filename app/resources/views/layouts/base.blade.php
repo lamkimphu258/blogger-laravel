@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="{{ asset('css/bootstrap.css') }}">
     <script src="{{ asset('js/bootstrap.bundle.js') }}"></script>
     <script src="{{ asset('js/app.js') }}"></script>
+    <script src="https://kit.fontawesome.com/d6903fe8c7.js" crossorigin="anonymous"></script>
     <title>@yield('title') - Blogger</title>
 </head>
 <body>
