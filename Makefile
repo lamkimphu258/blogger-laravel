@@ -19,10 +19,12 @@ app-exec:
 	docker-compose exec app
 
 composer-install:
-	$(MAKE) app-exec composer install
+	docker-compose exec app \
+	composer install
 
 composer-require:
-	$(MAKE) app-exec composer require $(PKG)
+	docker-compose exec app \
+    composer require $(PKG)
 
 artisan:
 	docker-compose exec app \

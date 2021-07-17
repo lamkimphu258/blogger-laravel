@@ -19,7 +19,7 @@ class PostController extends Controller
      */
     public function index(): View|Factory|Application
     {
-        $posts = Post::latest()->paginate(20);
+        $posts = Post::orderBy('published_at', 'desc')->paginate(10);
         return view('posts/list', ['posts' => $posts]);
     }
 

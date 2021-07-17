@@ -8,6 +8,8 @@ use Illuminate\Database\Eloquent\Factories\Factory;
 
 class CategoryFactory extends Factory
 {
+    public const CATEGORIES = ['php', 'web development', 'laravel', 'mysql'];
+
     /**
      * The name of the factory's corresponding model.
      *
@@ -23,7 +25,7 @@ class CategoryFactory extends Factory
     public function definition()
     {
         return [
-            'label' => $this->faker->text,
+            'label' => $this->faker->unique()->randomElement(array: self::CATEGORIES),
         ];
     }
 }
