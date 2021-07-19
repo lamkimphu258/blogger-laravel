@@ -7,7 +7,7 @@
 @section('content')
     <div class="container my-5">
         @foreach($categories as $category)
-            <h2 class="mt-5">{{ Illuminate\Support\Str::slug($category->label) }}</h2>
+            <h2 class="mt-5">{{ Illuminate\Support\Str::upper($category->label) }}</h2>
             <div id="{{ Illuminate\Support\Str::slug($category->label) }}" class="carousel slide carousel-fade" data-bs-ride="carousel" data-bs-interval="false">
                 <div class="carousel-inner">
                     @foreach($category->posts as $post)

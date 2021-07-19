@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\CommonController;
+use App\Http\Controllers\AuthenticationController;
 use App\Http\Controllers\PostController;
 use Illuminate\Support\Facades\Route;
 
@@ -24,3 +25,7 @@ Route::prefix('/posts')->group(function() {
     Route::get('/{post}', [PostController::class, 'show'])->name('post-show');
     Route::get('/{post}/{vote}', [PostController::class, 'vote'])->name('post-vote');
 });
+
+Route::get('/login', [AuthenticationController::class, 'login'])->name('login');
+Route::post('/login', [AuthenticationController::class, 'authenticate'])->name('authenticate');
+Route::get('/logout', [AuthenticationController::class, 'logout'])->name('logout');

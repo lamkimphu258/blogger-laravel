@@ -12,9 +12,11 @@
     <script src="https://kit.fontawesome.com/d6903fe8c7.js" crossorigin="anonymous"></script>
     <title>@yield('title') - Blogger</title>
 </head>
-<body>
-    @include('partials.navigation')
+<body class="d-flex flex-column justify-content-between min-vh-100">
+@include('partials.navigation')
+<div class="container my-5">
     @yield('content')
-    @include('partials.footer')
+</div>
+@include('partials.footer')
 </body>
 </html>
