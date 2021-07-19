@@ -4,6 +4,7 @@ namespace Database\Seeders;
 
 use App\Models\Category;
 use App\Models\Post;
+use App\Models\User;
 use Database\Factories\CategoryFactory;
 use Illuminate\Database\Seeder;
 
@@ -17,7 +18,11 @@ class CategorySeeder extends Seeder
     public function run()
     {
         Category::factory()
-            ->has(Post::factory()->count(5))
+            ->has(
+                Post::factory()->for(
+                    User::factory()->create(), 'author'
+                )->count(5)
+            )
             ->count(count(CategoryFactory::CATEGORIES))
             ->create();
     }

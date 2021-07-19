@@ -14,6 +14,9 @@
                         <h2><a href="{{ route('post-show', $post->slug) }}">{{ $post->title }}</a></h2>
                     </div>
                     <div class="text-muted">
+                        Author: {{ $post->author->name }}
+                    </div>
+                    <div class="text-muted">
                         {{ Carbon\Carbon::parse($post->published_at)->diffForHumans() }}
                     </div>
                 </div>

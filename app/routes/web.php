@@ -1,8 +1,10 @@
 <?php
 
+use App\Http\Controllers\AuthController;
 use App\Http\Controllers\CommonController;
-use App\Http\Controllers\AuthenticationController;
 use App\Http\Controllers\PostController;
+use App\Http\Controllers\RegistrationController;
+use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -16,16 +18,19 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::prefix('/')->group(function () {
-    Route::get('/', [CommonController::class, 'home'])->name('home');
-});
+Route::get('/', [CommonController::class, 'home'])->name('home');
 
-Route::prefix('/posts')->group(function() {
+Route::prefix('/posts')->group(function () {
     Route::get('/', [PostController::class, 'index'])->name('post-list');
     Route::get('/{post}', [PostController::class, 'show'])->name('post-show');
     Route::get('/{post}/{vote}', [PostController::class, 'vote'])->name('post-vote');
 });
 
-Route::get('/login', [AuthenticationController::class, 'login'])->name('login');
-Route::post('/login', [AuthenticationController::class, 'authenticate'])->name('authenticate');
-Route::get('/logout', [AuthenticationController::class, 'logout'])->name('logout');
+// Authentication
+Route::get('/login', [AuthController::class, 'login'])->name('login');
+Route::post('/login', [AuthController::class, 'authenticate'])->name('authenticate');
+Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
+
+// Registration
+Route::get('/register', [RegistrationController::class, 'registerUser'])->name('register-view');
+Route::post('/register', [RegistrationController::class, 'storeUser'])->name('register');

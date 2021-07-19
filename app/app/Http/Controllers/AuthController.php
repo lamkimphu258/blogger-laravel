@@ -11,14 +11,14 @@ use Illuminate\Http\Request;
 use Illuminate\Routing\Redirector;
 use Illuminate\Support\Facades\Auth;
 
-class AuthenticationController extends Controller
+class AuthController extends Controller
 {
     /**
      * @return Factory|View|Application
      */
     public function login(): Factory|View|Application
     {
-        return view('security.login');
+        return view('authentication.login');
     }
 
     /**

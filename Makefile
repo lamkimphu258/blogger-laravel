@@ -31,6 +31,6 @@ artisan:
 	php artisan $(CMD)
 
 reseed:
-	$(MAKE) artisan CMD=migrate:refresh
+	$(MAKE) artisan CMD=migrate:fresh
 	$(MAKE) artisan CMD=db:seed
 
