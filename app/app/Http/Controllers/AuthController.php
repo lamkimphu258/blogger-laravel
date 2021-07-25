@@ -18,7 +18,7 @@ class AuthController extends Controller
      */
     public function login(): Factory|View|Application
     {
-        return view('authentication.login');
+        return view('authentication/login');
     }
 
     /**

@@ -9,18 +9,15 @@ class Post extends Model
 {
     use HasFactory;
 
-    public function category()
-    {
-        return $this->belongsTo(Category::class);
-    }
+    protected $fillable = [
+        'title',
+        'content',
+        'slug',
+        'author_id',
+    ];
 
     public function author()
     {
         return $this->belongsTo(User::class);
-    }
-
-    public function getRouteKeyName()
-    {
-        return 'slug';
     }
 }

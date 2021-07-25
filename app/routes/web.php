@@ -1,10 +1,8 @@
 <?php
 
 use App\Http\Controllers\AuthController;
-use App\Http\Controllers\CommonController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\RegistrationController;
-use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -18,15 +16,38 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', [CommonController::class, 'home'])->name('home');
+Route::get('/', [PostController::class, 'index'])
+    ->name('post-list');
 
-Route::prefix('/posts')->group(function () {
-    Route::get('/', [PostController::class, 'index'])->name('post-list');
-    Route::get('/{post}', [PostController::class, 'show'])->name('post-show');
-    Route::get('/{post}/{vote}', [PostController::class, 'vote'])
-        ->name('post-vote')
-        ->middleware('auth');
-});
+Route::prefix('/posts')->group(
+    function () {
+        Route::get('/{post}', [PostController::class, 'show'])
+            ->name('post-show');
+    }
+);
+
+Route::middleware(['auth'])->group(
+    function () {
+        Route::prefix('/member/posts')->group(
+            function () {
+                Route::get('/', [PostController::class, 'indexByAuthor'])
+                    ->name('post-list-by-author');
+                Route::get('/create', [PostController::class, 'create'])
+                    ->name('post-create');
+                Route::post('/create', [PostController::class, 'store'])
+                    ->name('post-store');
+                Route::get('/delete/{id}', [PostController::class, 'destroy'])
+                    ->name('post-delete');
+                Route::get('/{post}', [PostController::class, 'edit'])
+                    ->name('post-edit');
+                Route::post('/{post}', [PostController::class, 'update'])
+                    ->name('post-update');
+                Route::get('/{post}/{vote}', [PostController::class, 'vote'])
+                    ->name('post-vote');
+            }
+        );
+    }
+);
 
 // Authentication
 Route::get('/login', [AuthController::class, 'login'])->name('login');
