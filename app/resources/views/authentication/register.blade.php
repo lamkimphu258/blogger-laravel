@@ -9,9 +9,7 @@
     <form action="{{route('register')}}" method="POST">
         @csrf
         @if ($errors->any('name', 'email', 'password'))
-            <div class="alert alert-danger" role="alert">
-                {{ $errors->first() }}
-            </div>
+            @include('partials.error-flash-message')
         @endif
         <div class="mb-3">
             <label for="name" class="form-label">Name</label>

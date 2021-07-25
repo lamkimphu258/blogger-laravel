@@ -5,6 +5,9 @@
 @endsection
 
 @section('content')
+    @if ($errors->any())
+        @include('partials.error-flash-message')
+    @endif
     <h2>{{ $post->title }}</h2>
     <div class="d-flex justify-content-between">
         <span class="text-muted">{{ Carbon\Carbon::parse($post->published_at)->diffForHumans() }}</span>

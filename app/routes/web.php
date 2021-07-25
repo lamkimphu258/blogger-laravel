@@ -23,7 +23,9 @@ Route::get('/', [CommonController::class, 'home'])->name('home');
 Route::prefix('/posts')->group(function () {
     Route::get('/', [PostController::class, 'index'])->name('post-list');
     Route::get('/{post}', [PostController::class, 'show'])->name('post-show');
-    Route::get('/{post}/{vote}', [PostController::class, 'vote'])->name('post-vote');
+    Route::get('/{post}/{vote}', [PostController::class, 'vote'])
+        ->name('post-vote')
+        ->middleware('auth');
 });
 
 // Authentication

@@ -2,13 +2,14 @@
 
 namespace App\Http\Controllers;
 
+use App\Enums\VoteEnum;
 use App\Models\Post;
+use Illuminate\Auth\Access\AuthorizationException;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
-use App\Enums\VoteEnum;
 
 class PostController extends Controller
 {
@@ -94,6 +95,11 @@ class PostController extends Controller
      */
     public function vote(Post $post, string $vote)
     {
+        try {
+            $this->authorize('vote', $post);
+        } catch (AuthorizationException $e) {
+            return back()->withErrors('You can not vote your post');
+        }
         if ($vote === VoteEnum::LIKE) {
             $post->like++;
             $post->save();
