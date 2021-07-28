@@ -31,5 +31,5 @@
             </div>
         </div>
     </div>
-    <p class="mt-3">{{ $post->content }}</p>
+    {!! $post->content !!}
 @endsection

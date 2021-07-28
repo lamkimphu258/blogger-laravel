@@ -10,6 +10,7 @@
     <script src="{{ asset('js/bootstrap.bundle.js') }}"></script>
     <script src="{{ asset('js/app.js') }}"></script>
     <script src="https://kit.fontawesome.com/d6903fe8c7.js" crossorigin="anonymous"></script>
+    <script src="//cdn.ckeditor.com/4.14.1/standard/ckeditor.js"></script>
     <title>@yield('title') - Blogger</title>
 </head>
 <body class="d-flex flex-column justify-content-between min-vh-100">
