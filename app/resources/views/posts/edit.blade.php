@@ -18,7 +18,8 @@
         </div>
         <div class="mb-3">
             <label for="content" class="form-label">Content</label>
-            <input type="content" class="form-control" id="content" name="content" value="{{ $post->content }}">
+{{--            <input type="content" class="form-control" id="content" name="content" value="{{ $post->content }}">--}}
+            <textarea class="ckeditor form-control" id="content" name="content">{{ $post->content }}</textarea>
         </div>
         <button type="submit" class="btn btn-primary">Update</button>
     </form>
